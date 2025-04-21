@@ -1,0 +1,70 @@
+Authentication Routes
+
+This API provides two endpoints for user authentication.
+
+1. Send OTP
+Endpoint: /sendotp Method: POST
+
+Description: Sends a One-Time Password (OTP) to the user's registered mobile number or email.
+
+Request Body:
+
+No request body is required for this endpoint.
+Response:
+
+A success response with a message indicating that the OTP has been sent successfully.
+An error response with a m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++
+essage indicating the reason for failure.
+2. Sign In
+Endpoint: /signin Method: POST
+
+Description: Authenticates the user using the OTP sent to their registered mobile number or email.
+
+Request Body:
+
+otp: The One-Time Password received by the user.
+phoneNumber or email: The user's registered mobile number or email.
+Response:
+
+A success response with a JSON Web Token (JWT) for authenticated users.
+An error response with a message indicating the reason for failure.
+Note:
+
+The sendOtp and userAuth functions are implemented in the authController module.
+The API expects the request body to be in JSON format.
+The API returns responses in JSON format.
+Error responses may include additional information about the error, such as an error code or message.

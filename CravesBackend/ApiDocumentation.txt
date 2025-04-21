@@ -1,0 +1,105 @@
+Authentication Routes
+
+This API provides two endpoints for user authentication.
+
+1. Send OTP
+Endpoint: /sendotp Method: POST
+
+Description: Sends a One-Time Password (OTP) to the user's registered mobile number or email.
+
+Request Body:
+
+No request body is required for this endpoint.
+Response:
+
+A success response with a message indicating that the OTP has been sent successfully.
+An error response with a message indicating the reason for failure.
+
+2. Sign In
+Endpoint: /signin Method: POST
+
+Description: Authenticates the user using the OTP sent to their registered mobile number or email.
+
+Request Body:
+
+otp: The One-Time Password received by the user.
+phoneNumber or email: The user's registered mobile number or email.
+Response:
+
+A success response with a JSON Web Token (JWT) for authenticated users.
+An error response with a message indicating the reason for failure.
+Note:
+
+The sendOtp and userAuth functions are implemented in the authController module.
+The API expects the request body to be in JSON format.
+The API returns responses in JSON format.
+Error responses may include additional information about the error, such as an error code or message.
+
+3. Get Restaurant Details
+Endpoint: /GetRestaurant/:id
+
+Method: GET
+
+Description: Retrieves the details of a restaurant using the provided restaurant ID.
+
+Request Parameters:
+
+id (Path Parameter): The ID of the restaurant you want to retrieve.
+Response:
+
+Success: Returns a JSON object containing the restaurant details.
+Error: Returns an error response if the restaurant is not found or if there is a server error.
+
+4. Add New Restaurant
+Endpoint: /AddRestaurant
+
+Method: POST
+
+Description: Creates a new restaurant entry in the system.
+
+Request Body:
+
+restaurantName (String): The name of the restaurant. (Required)
+document (String): Any related document for the restaurant. (Required)
+accountDetails (Object): Bank account details associated with the restaurant. (Optional)
+assignedOrders (Array of ObjectIds): A list of order IDs assigned to the restaurant. (Optional)
+availabilityStatus (String): The availability status of the restaurant (Available, Unavailable). (Optional)
+location (Object): The location of the restaurant, including coordinates and type. (Required)
+dishes (Array of Objects): A list of dishes offered by the restaurant. Each dish object includes:
+dishName (String): The name of the dish.
+price (Number): The price of the dish.
+description (String): A brief description of the dish.
+available (Boolean): Whether the dish is currently available.
+Response:
+
+Success: Returns a success message and the created restaurant's details.
+Error: Returns an error response with a message indicating the reason for failure (e.g., validation errors, server errors).
+
+5. Update Restaurant Profile
+Endpoint: /UpdateRestaurant/:id
+
+Method: PUT
+
+Description: Updates the details of an existing restaurant using the provided restaurant ID.
+
+Request Parameters:
+
+id (Path Parameter): The ID of the restaurant to update.
+Request Body:
+
+restaurantName (String): The updated name of the restaurant. (Required)
+document (String): Updated document information for the restaurant. (Required)
+accountDetails (Object): Updated bank account details associated with the restaurant. (Optional)
+assignedOrders (Array of ObjectIds): Updated list of order IDs assigned to the restaurant. (Optional)
+availabilityStatus (String): The updated availability status of the restaurant (Available, Unavailable). (Optional)
+location (Object): The updated location of the restaurant, including coordinates and type. (Required)
+dishes (Array of Objects): Updated list of dishes offered by the restaurant. Each dish object includes:
+dishName (String): The updated name of the dish.
+price (Number): The updated price of the dish.
+description (String): Updated description of the dish.
+available (Boolean): Whether the dish is currently available.
+Response:
+
+Success: Returns a success message and the updated restaurant's details.
+Error: Returns an error response with a message indicating the reason for failure (e.g., restaurant not found, validation errors, server errors).
+
